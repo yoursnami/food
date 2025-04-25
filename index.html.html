@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Food Storage Box</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #eafaf1, #ffffff);
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #b8aee6, #185a9d);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    section {
+      padding: 2.5rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 2rem;
+    }
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .team-member {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 180px;
+    }
+    .team-member img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+      border: 2px solid #4CAF50;
+    }
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin-top: 3rem;
+    }
+    a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .button-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .button-link:hover {
+      background-color: #3e8e41;
+    }
+    img.full-width {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<script>
+  const snowflakes = document.querySelectorAll('.snowflake');
+  snowflakes.forEach(snowflake => {
+    snowflake.style.left = Math.random() * 100 + 'vw';
+    snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+    snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+  });
+</script>
+<script>
+  const snowflakes = document.querySelectorAll('.snowflake');
+  snowflakes.forEach(snowflake => {
+    snowflake.style.left = Math.random() * 100 + 'vw';
+    snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+    snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+  });
+</script><script>
+  const snowflakes = document.querySelectorAll('.snowflake');
+  snowflakes.forEach(snowflake => {
+    snowflake.style.left = Math.random() * 100 + 'vw';
+    snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+    snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+  });
+</script>
+<body>
+  <header>
+    <h1>Smart Food Storage Box</h1>
+    <p>Smarter Storage, Fresher Food</p>
+  </header>
+
+  <section>
+    <h2>Project Overview</h2>
+    <p>The Smart Food Storage Box is a smart and energy-efficient solution aimed at reducing food waste and improving storage management. Our box uses IoT sensors to monitor temperature, humidity, and food shelf life, notifying users via a mobile app when conditions are not optimal or when food is nearing expiration.</p>
+    <img src="photo_6057467809962772046_y.jpg" alt="Early Sketch of Smart Food Storage Box" class="full-width">
+    <p style="margin-top:0.5rem; font-style: italic; color: gray;">Our early sketch outlining the concept, features, and user scenarios.</p>
+  </section>
+
+  <section>
+    <h2>Our Proposal</h2>
+    <p>This website and project are part of our proposal for the Human Interaction course, where we aim to create a user-friendly, tech-enabled solution that solves a real-world problem. The Smart Food Storage Box focuses on enhancing the interaction between humans and technology to promote sustainable food practices.</p>
+  </section>
+
+  <section>
+    <h2>Key Features</h2>
+    <ul>
+      <li>Real-time temperature and humidity monitoring</li>
+      <li>Mobile app notifications for food expiration</li>
+      <li>Energy-efficient cooling system</li>
+      <li>Remote control and data sync via mobile application</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Technology Stack</h2>
+    <p>
+      <strong>Hardware:</strong> IoT sensors, Microcontroller (ESP32)<br>
+      <strong>Software:</strong> React Native App, Node.js Backend, Firebase database<br>
+      <strong>Connectivity:</strong> Wi-Fi module for real-time sync
+    </p>
+  </section>
+  <section class="project-idea">
+  <h2>💡 Main Ideas</h2>
+  <ul class="idea-list">
+    <li><strong>Emoji Display:</strong> Shows food status using faces – happy for good, sad for expired.</li>
+    <li><strong>Expiration Awareness:</strong> Users are notified when food is about to or has expired.</li>
+    <li><strong>App Notification:</strong> Sends alerts to the phone when food is no longer safe.</li>
+    <li><strong>Compact Design:</strong> Helps manage space and encourages eating leftovers first.</li>
+    <li><strong>Simple Interface:</strong> Easy to understand, especially for kids and the elderly.</li>
+  </ul>
+</section>
+
+<section class="project-solution">
+  <h2>🎯 What Problem Are We Solving?</h2>
+  <ul>
+    <li>❌ Forgetting leftovers leads to <strong>food waste</strong>.</li>
+    <li>❌ Expired food can be eaten accidentally, causing health issues.</li>
+    <li>❌ Fridge space gets wasted due to untracked food.</li>
+    <li>❌ Hard to remember expiration dates manually.</li>
+  </ul>
+</section>
+
+<section class="target-users">
+  <h2>👥 Target Users</h2>
+  <p>This solution is perfect for:</p>
+  <ul>
+    <li>👵 Elderly people living alone</li>
+    <li>🎓 Students</li>
+    <li>🏠 Housewives</li>
+    <li>👤 Single working individuals</li>
+  </ul>
+</section>
+
+  <link rel="stylesheet" href="style.css">
+
+
+  <section>
+    <h2>Our Class & Project</h2>
+    <p>We are students of <strong>Human Interaction (SEC2113)</strong> at <strong>
+	UNIVERSITI TEKNOLOGI MALAYSIA</strong>. 
+	This project is part of our coursework under the guidance of 
+	<strong>Dr. Nor Anita Fairos</strong> during the <strong>our third</strong> semester. It serves as our final proposal combining both technical and user interaction aspects of product design.</p>
+  </section>
+
+  <section>
+    <h2>Meet Our Team</h2>
+    <p>We are a group of five dedicated students working together to bring our Smart Food Storage Box to life. Each of us plays a unique role in the project:</p>
+    <div class="team-members">
+      <div class="team-member">
+        <img src="https://via.placeholder.com/100" alt="Team Member 1">
+        <h3>SITI NURFARAHIN BINTI ROSLI</h3>
+        <p>Project Manager</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/100" alt="Team Member 2">
+        <h3>NURMINAH BINTI FRIDNAH</h3>
+        <p>Software Developer</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/100" alt="Team Member 3">
+        <h3>UMYRA BINTI ASMADI ASWAD</h3>
+        <p>UI/UX Designer</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/100" alt="Team Member 4">
+        <h3>NURUL AZREEN NISHA BINTI HARULNIZAM</h3>
+        <p>Data Integration Specialist</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/100" alt="Team Member 5">
+        <h3>HARISWARAN A/L RAGUPATHY</h3>
+        <p>Hardware Engineer</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:team@smartfoodbox.com">team@smartfoodbox.com</a></p>
+    <p>Follow us on <a href="#">Instagram</a> and <a href="#">Facebook</a></p>
+    <a href="proposal.html" class="button-link">View Full Proposal</a>
+  </section>
+  <div class="snowflakes" aria-hidden="true">
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❄</div>
+</div>
+
+  <footer>
+    <p>&copy; 2025 Smart Food Storage Box Team | Human Interaction SEC2113</p>
+  </footer>
+</body>
+</html>
