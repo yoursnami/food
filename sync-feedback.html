@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🔄 Sync Feedback</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-900 to-slate-800 text-white min-h-screen p-6 font-sans">
+
+  <div class="max-w-2xl mx-auto bg-slate-800 p-6 rounded-xl shadow-xl">
+    <h1 class="text-3xl font-bold text-cyan-300 mb-4">🔁 Sync Feedback</h1>
+
+    <!-- Real-time Message -->
+    <div class="bg-green-800/30 border border-green-500 text-green-300 p-4 rounded mb-6">
+      ✅ <strong>Eggs removed by Mom – synced across devices</strong>
+    </div>
+
+    <!-- Visual Timeline Log -->
+    <div class="space-y-4 border-l-2 border-cyan-500 pl-4 mb-8">
+      <div>
+        <p class="text-cyan-300 font-semibold">👩 Mom (Tablet)</p>
+        <p class="text-gray-300">🕒 10:42 AM — Removed 🥚 Eggs from inventory</p>
+      </div>
+      <div>
+        <p class="text-purple-300 font-semibold">👧 Emma (Phone)</p>
+        <p class="text-gray-300">🕒 10:43 AM — Inventory updated: Eggs removed</p>
+      </div>
+    </div>
+
+    <!-- Dynamic Inventory Snapshot -->
+    <h2 class="text-xl font-semibold text-purple-200 mb-2">📦 Current Inventory</h2>
+    <ul class="space-y-2">
+      <li class="bg-slate-700 p-3 rounded border border-slate-600">
+        🥛 Milk (Dairy) <span class="text-yellow-300 ml-2">😐 Use Soon</span>
+      </li>
+      <li class="bg-slate-700 p-3 rounded border border-slate-600">
+        🥦 Broccoli (Vegetables) <span class="text-green-300 ml-2">🆕 Fresh</span>
+      </li>
+      <!-- Removed item -->
+      <li class="line-through bg-slate-700 p-3 rounded border border-slate-600 text-red-400">
+        🥚 Eggs (Removed)
+      </li>
+    </ul>
+
+    <div class="mt-6 text-center">
+      <a href="interfacetest.html" class="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded">⬅ Back to Main Interface</a>
+    </div>
+  </div>
+
+</body>
+</html>

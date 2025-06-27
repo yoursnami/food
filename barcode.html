@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scanning Item...</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0a0f1e;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #00f7ff;
+    }
+
+    .scanner-frame {
+      position: relative;
+      width: 90%;
+      max-width: 600px;
+      border: 4px solid #00f7ff;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: rgba(0, 255, 255, 0.8);
+      animation: scan 2s linear infinite;
+    }
+
+    @keyframes scan {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+
+    .done-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #00f7ff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00f7ff;
+      transition: background 0.3s;
+    }
+
+    .done-button:hover {
+      background: #00d4dd;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 Scanning Item...</h1>
+
+  <div class="scanner-frame">
+    <video id="video" autoplay playsinline></video>
+    <div class="scan-line"></div>
+  </div>
+
+  <button onclick="goToExpiry()" class="bg-cyan-500 hover:bg-cyan-400 text-white px-4 py-2 rounded-lg shadow-lg mt-4 w-32 mx-auto block">
+  ✅ Done
+</button>
+
+
+  <script>
+    let stream;
+
+    async function startCamera() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { exact: "environment" } },
+          audio: false
+        });
+        document.getElementById('video').srcObject = stream;
+      } catch (err) {
+        console.warn("Back camera not found, trying default.");
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({ video: true });
+          document.getElementById('video').srcObject = stream;
+        } catch (e) {
+          alert("No camera available.");
+        }
+      }
+    }
+
+    function stopCameraAndGoBack() {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+      window.location.href = 'interfacetest.html';
+    }
+
+    startCamera();
+  </script>
+  <script>
+  function goToExpiry() {
+    // Simulate a scanned item being stored temporarily
+    const scannedItem = {
+      name: "Cereal", // You can replace this with dynamic scanning in the future
+      category: "Snacks", // Example category
+      storedDate: new Date().toISOString()
+    };
+    localStorage.setItem("scannedItem", JSON.stringify(scannedItem));
+    window.location.href = "confirm-expiry.html";
+  }
+</script>
+
+</body>
+</html>

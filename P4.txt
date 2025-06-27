@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Storage System Report</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f1e8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2, h3 {
+      color: #5a7d5a;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-block {
+      margin-bottom: 2rem;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+
+    .scene {
+      background-color: #e8f5e9;
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Smart Storage System</h1>
+
+    <div class="section-block">
+      <h2>1.0 PROTOTYPE OVERVIEW</h2>
+      <p>This project focuses on the design, development, and evaluation of a functional prototype aimed at addressing a specific user need or problem scenario...</p>
+    </div>
+
+    <div class="section-block">
+      <h2>1.0 METAPHOR</h2>
+      <p>In developing the interaction metaphors for the Smart Storage system interface...</p>
+      <!-- [Metaphor sections unchanged for brevity] -->
+    </div>
+
+    <div class="section-block">
+      <h2>2.0 STORYBOARD</h2>
+      <div class="scene"><strong>Figure 2.1:</strong> Scene 1 for Task 1</div>
+      <div class="scene"><strong>Figure 2.2:</strong> Scene 1 for Task 2</div>
+      <div class="scene"><strong>Figure 2.3:</strong> Scene 3 for Task 3</div>
+      <div class="scene"><strong>Figure 2.4:</strong> Scene 4 for the New Design Requirement</div>
+    </div>
+
+    <div class="section-block">
+      <h2>3.0 BRIEFING NOTES</h2>
+      <p>Hi! We are from PR07 and would like to welcome all users to explore our newly designed Smart Food Storage Box...</p>
+    </div>
+
+    <div class="section-block">
+      <h2>4.0 SCENARIO TASKS (INDEX CARDS)</h2>
+      <ul>
+        <li>Task 1: Place your face within the face recognition circle displayed on the screen and choose your username.</li>
+        <li>Task 2: Add a new food item to storage by either scanning the food barcode or entering the details manually.</li>
+        <li>Task 3: Point your back camera at the barcode so it can be captured and automatically update the expiry date into the system.</li>
+        <li>Task 4: Enter the food name, select the appropriate food category, and pick the expiry date using the digital calendar on the screen.</li>
+        <li>Task 5: Monitor the inventory to check the food status—whether it is nearly expired or already expired.</li>
+        <li>Task 6: Choose an expiry reminder action where you can decide to consume, discard, or snooze the selected item.</li>
+        <li>Task 7: Based on the available items in inventory, suggested recipes will be displayed. Choose one of the suggested recipes to be directed to the recipe page.</li>
+        <li>Task 8: Select any item you identify as out of stock so it will be automatically added to your grocery list.</li>
+        <li>Task 9: Tap on another user’s activity log to view the activity of other users from the same family account.</li>
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>5.0 USER DEMOGRAPHICS AND TESTING</h2>
+      <p>Provided below is the link to the related videos demonstrating users during the testing.</p>
+      <p><strong>Link:</strong> <a href="https://drive.google.com/drive/folders/1JKCiQGjifFg-jw1-iAyRgxIaYQnPnCZh?usp=sharing" target="_blank">Watch User Testing Videos</a></p>
+      <ul>
+        <li><strong>User 1:</strong> A lecturer for the Human-Computer Interaction course.</li>
+        <li><strong>User 2:</strong> A 21-year-old student majoring in Mechanical Engineering, currently in his second year.</li>
+        <li><strong>User 3:</strong> A 21-year-old student majoring in Chemical Engineering, currently in her second year.</li>
+        <li><strong>User 4:</strong> A 21-year-old student majoring in Chemical Engineering (Gas), currently in his second year.</li>
+      </ul>
+    </div>
+
+    <div class="section-block">
+      <h2>6.0 USER OBSERVATIONS</h2>
+      <p>[Insert your observations from user testing here. This could include direct quotes, behavioral notes, usability issues, or engagement highlights. If you’d like, I can help you format this based on real notes you have.]</p>
+    </div>
+
+    <div class="section-block">
+      <h2>7.0 KEY FINDINGS</h2>
+      <p>[Insert your summary of key findings here. Typically includes positive results, usability patterns, recurring issues, or improvement suggestions. I can assist you in phrasing it if needed.]</p>
+    </div>
+  </div>
+</body>
+</html>

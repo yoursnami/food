@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Futuristic Smart Storage</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(145deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .glass {
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glow-button {
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+      background: linear-gradient(145deg, #2563eb, #1e40af);
+      box-shadow: 0 0 8px #3b82f6;
+    }
+    .glow-button:hover {
+      box-shadow: 0 0 16px #60a5fa;
+      transform: scale(1.05);
+    }
+    .tag {
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #1f2937;
+      color: #e2e8f0;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="p-6">
+
+<!-- Popup Warning -->
+<div id="expiryPopup" class="fixed top-10 left-1/2 transform -translate-x-1/2 z-50 max-w-md w-full rounded-xl hidden shadow-xl">
+  <div id="popupBox" class="p-6 rounded-xl">
+    <div class="flex justify-between items-center mb-3">
+      <h2 id="popupTitle" class="text-xl font-bold">⚠️ Expiry Alert</h2>
+      <button onclick="closeExpiryPopup()" class="text-white hover:text-red-300 text-xl font-bold">✖</button>
+    </div>
+    <div class="text-white">
+      <div id="bigWarning" class="text-5xl text-center mb-4 hidden">🚨</div>
+      <ul id="expiryList" class="space-y-2 text-sm"></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="text-center mb-6">
+  <h1 class="text-4xl font-bold text-blue-400 tracking-wider mb-1">🔮 Smart Storage</h1>
+  <p class="text-gray-400">Welcome back, <span class="text-blue-200">Farhan</span></p>
+</header>
+
+<!-- Add Food -->
+<section class="glass p-6 rounded-2xl shadow-lg mb-8">
+  <h2 class="text-2xl font-semibold text-cyan-300 mb-4">Add Food to Storage</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <p class="mb-2 text-gray-300">How would you like to add your food item</p>
+      <button onclick="window.location.href='barcode.html'" class="glow-button text-white px-4 py-2 rounded w-full mb-2">📷 Scan Barcode</button>
+      <button onclick="window.location.href='manual.html'" class="glow-button text-white px-4 py-2 rounded w-full mb-2">🥕 Enter Manually</button>
+    </div>
+    <div>
+      <p class="mb-2 text-gray-300">Select Category</p>
+      <div class="flex flex-wrap gap-3">
+        <a href="category.html?type=Dairy" class="flex items-center gap-2 px-3 py-1.5 rounded-md bg-blue-800 hover:bg-blue-700 text-blue-200 font-medium">🥛 <span>Dairy</span></a>
+        <a href="category.html?type=Vegetables" class="flex items-center gap-2 px-3 py-1.5 rounded-md bg-green-800 hover:bg-green-700 text-green-200 font-medium">🥦 <span>Vegetables</span></a>
+        <a href="category.html?type=Snacks" class="flex items-center gap-2 px-3 py-1.5 rounded-md bg-pink-800 hover:bg-pink-700 text-pink-200 font-medium">🍪 <span>Snacks</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Expiry Reminder (Static Example) -->
+<section class="glass p-6 rounded-2xl shadow-lg mb-8">
+  <h2 class="text-2xl font-semibold text-red-400 mb-4">⚠️ Expiry Reminder</h2>
+  <div class="flex justify-between items-center">
+    <p class="text-red-300 text-lg">😟 Milk expires <strong>tomorrow</strong></p>
+    <div id="expiryPopup" class="fixed top-10 left-1/2 transform -translate-x-1/2 z-50 max-w-md w-full rounded-xl hidden shadow-xl">
+  <!-- Popup content for expiry alert -->
+</div><div id="toast" class="toast">Deleted successfully!</div>
+<!-- Reminder Actions -->
+<div id="reminderActions" class="flex gap-2 mt-4">
+  <button onclick="markAs('consumed')" class="bg-green-700 hover:bg-green-600 text-white px-3 py-1 rounded">Consumed</button>
+  <button onclick="markAs('discarded')" class="bg-red-700 hover:bg-red-600 text-white px-3 py-1 rounded">Discarded</button>
+  <button onclick="snoozeItem()" class="bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-1 rounded">Snooze</button>
+</div>
+
+<!-- Add to Grocery Prompt -->
+<div id="groceryPrompt" class="mt-4 hidden text-blue-300">
+  ➕ Add <strong>Milk</strong> to grocery list?
+  <button onclick="addToGrocery()" class="underline ml-2">Yes</button>
+</div>
+  </div>
+</section>
+
+<!-- Inventory Section -->
+<section class="glass p-6 rounded-2xl shadow-lg mb-8">
+  <h2 class="text-2xl font-semibold text-purple-300 mb-4">Inventory & Grocery</h2>
+
+  <div class="mb-3">
+    <p>🍅 <strong>Tomatoes</strong>: <span class="text-yellow-300">😐 Use Soon</span></p>
+  </div>
+  <div class="mb-3">
+    <p class="font-medium text-gray-200">Suggested Recipe:</p>
+    <div class="flex flex-wrap gap-2">
+  <a href="pasta.html" class="bg-purple-800 hover:bg-purple-700 text-white px-3 py-1 rounded">🍝 Tomato Pasta</a>
+  <a href="recipe-fried-rice.html" class="bg-yellow-700 hover:bg-yellow-600 text-white px-3 py-1 rounded">🍳 Simple Fried Rice</a>
+  <a href="recipe-cheesy-toast.html" class="bg-pink-800 hover:bg-pink-700 text-white px-3 py-1 rounded">🧀 Cheesy Toast</a>
+  <a href="recipe-banana-milk.html" class="bg-blue-800 hover:bg-blue-700 text-white px-3 py-1 rounded">🍌 Banana Milk</a>
+</div>
+
+  </div>
+  <p class="text-sm text-gray-300">Auto-added to grocery: <span class="text-blue-200">Pasta, Garlic</span></p>
+  <div class="mt-3 text-green-300">✅ Grocery list ready. Recipe saved.</div>
+
+  <!-- Filter Buttons -->
+  <div class="my-4 flex gap-2">
+    <button onclick="loadInventory('all')" class="px-3 py-1 rounded bg-slate-700 hover:bg-slate-600">All</button>
+    <button onclick="loadInventory('fresh')" class="px-3 py-1 rounded bg-green-700 hover:bg-green-600">Fresh</button>
+    <button onclick="loadInventory('nearly')" class="px-3 py-1 rounded bg-yellow-700 hover:bg-yellow-600">Nearly Expired</button>
+    <button onclick="loadInventory('expired')" class="px-3 py-1 rounded bg-red-700 hover:bg-red-600">Expired</button>
+  </div>
+
+  <!-- Inventory List -->
+  <div id="manualInventory" class="mt-4 border-t border-gray-600 pt-4">
+    <h3 class="text-xl font-semibold text-blue-300 mb-2">🗃️ My Stored Food</h3>
+  </div>
+</section>
+
+<!-- Multi-user Sync -->
+<section class="glass p-6 rounded-2xl shadow-lg mb-8">
+  <h2 class="text-2xl font-semibold text-cyan-400 mb-4">👨‍👩‍👧 Multi-user Sync</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="border border-cyan-800 p-4 rounded-lg">
+      <p>📱 <strong>Mom</strong> (Tablet)</p>
+      <p class="text-gray-400">Action: Discarded 🥚 Eggs</p>
+    </div>
+    <div class="border border-cyan-800 p-4 rounded-lg">
+      <p>📱 <strong>Emma</strong> (Tablet)</p>
+      <p class="text-green-300">🔄 Eggs removed by Mom – synced</p>
+    </div>
+  </div>
+</section>
+
+<!-- Toast Message -->
+<div id="toast" class="toast">Deleted successfully!</div>
+
+<!-- Footer -->
+<footer class="text-center text-gray-500 text-xs mt-8">
+  © 2025 Smart Storage Prototype — Future-UI Mode 🪐
+</footer>
+
+<!-- SCRIPT -->
+<script>
+  function getEmojiStatus(item) {
+    const today = new Date();
+    const storedDate = new Date(item.storedDate);
+    const expiryDate = new Date(item.expiryDate);
+    const storedDays = Math.floor((today - storedDate) / (1000 * 60 * 60 * 24));
+    if (today > expiryDate || storedDays >= 10) return { emoji: "😖 Expired", status: "expired" };
+    if (storedDays >= 5) return { emoji: "😟 Nearly Expired", status: "nearly" };
+    return { emoji: "🆕 Fresh", status: "fresh" };
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById("toast");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 2500);
+  }
+
+  function deleteItem(index) {
+  if (!confirm("Delete this item?")) return;
+
+  const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+  const deleted = inventory[index];
+
+  // Remove item from inventory
+  inventory.splice(index, 1);
+  localStorage.setItem("inventory", JSON.stringify(inventory));
+
+  // Add to sync log
+  const syncLog = JSON.parse(localStorage.getItem("syncLog")) || [];
+  syncLog.unshift({
+    name: deleted.name,
+    category: deleted.category,
+    user: "Sarah", // You can make this dynamic based on profile
+    time: new Date().toLocaleTimeString(),
+    action: "removed"
+  });
+  localStorage.setItem("syncLog", JSON.stringify(syncLog));
+
+  loadInventory(currentFilter);
+  showToast(`${deleted.name} removed and synced.`);
+}
+
+
+  let currentFilter = 'all';
+
+  function loadInventory(filter = 'all') {
+    currentFilter = filter;
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+    const container = document.getElementById("manualInventory");
+    container.innerHTML = `<h3 class="text-xl font-semibold text-blue-300 mb-2">🗃️ My Stored Food</h3>`;
+
+    if (inventory.length === 0) {
+      container.innerHTML += `<p class="text-gray-400">No items yet.</p>`;
+      return;
+    }
+
+    const emojiMap = { "Dairy": "🥛", "Vegetables": "🥦", "Snacks": "🍪" };
+
+    inventory.forEach((item, index) => {
+      const { emoji, status } = getEmojiStatus(item);
+      if (filter !== "all" && filter !== status) return;
+      const categoryIcon = emojiMap[item.category] || "🍽️";
+      const itemCard = document.createElement("div");
+      itemCard.className = `flex justify-between items-center p-3 rounded mb-2 border ${
+        status === "expired" ? "bg-red-900 border-red-700" :
+        status === "nearly" ? "bg-yellow-900 border-yellow-700" :
+        "bg-green-900 border-green-700"
+      }`;
+      itemCard.innerHTML = `
+        <div>
+          ${categoryIcon} <strong>${item.name}</strong> <span class="text-gray-400">(${item.category})</span><br/>
+          <span class="text-yellow-300">${emoji}</span>
+        </div>
+        <button onclick="deleteItem(${index})" class="text-red-400 hover:text-red-200 font-bold text-lg">❌</button>
+      `;
+      container.appendChild(itemCard);
+    });
+  }
+
+  function showExpiryPopup() {
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+    const list = document.getElementById("expiryList");
+    const popup = document.getElementById("expiryPopup");
+    const warningIcon = document.getElementById("bigWarning");
+    const popupBox = document.getElementById("popupBox");
+    const popupTitle = document.getElementById("popupTitle");
+
+    const today = new Date();
+    let warningItems = [], hasExpired = false, hasTomorrowExpiry = false;
+
+    list.innerHTML = "";
+
+    inventory.forEach(item => {
+      const expiryDate = new Date(item.expiryDate);
+      const storedDate = new Date(item.storedDate);
+      const daysLeft = Math.floor((expiryDate - today) / (1000 * 60 * 60 * 24));
+      const storedDays = Math.floor((today - storedDate) / (1000 * 60 * 60 * 24));
+
+      if (daysLeft < 0 || storedDays >= 10) {
+        warningItems.push(`🍽️ <strong>${item.name}</strong> (${item.category}) → <span class="text-red-400">😖 Expired</span>`);
+        hasExpired = true;
+      } else if (daysLeft === 0) {
+        warningItems.push(`🍽️ <strong>${item.name}</strong> (${item.category}) → <span class="text-orange-300">⚠️ Expires Tomorrow</span>`);
+        hasTomorrowExpiry = true;
+      } else if (storedDays >= 5) {
+        warningItems.push(`🍽️ <strong>${item.name}</strong> (${item.category}) → <span class="text-yellow-300">😟 Nearly Expired</span>`);
+      }
+    });
+
+    if (warningItems.length > 0) {
+      popup.classList.remove("hidden");
+
+      if (hasExpired) {
+        popupBox.className = "p-6 rounded-xl bg-red-900 border border-red-400";
+        warningIcon.classList.remove("hidden");
+        warningIcon.textContent = "🚨";
+        popupTitle.textContent = "🚨 Expired Item Alert!";
+      } else if (hasTomorrowExpiry) {
+        popupBox.className = "p-6 rounded-xl bg-yellow-800 border border-yellow-400";
+        warningIcon.classList.remove("hidden");
+        warningIcon.textContent = "⚠️";
+        popupTitle.textContent = "⚠️ Tomorrow Expiry";
+      } else {
+        popupBox.className = "p-6 rounded-xl bg-slate-800 border border-slate-600";
+        warningIcon.classList.add("hidden");
+        popupTitle.textContent = "🕒 Reminder";
+      }
+
+      list.innerHTML = warningItems.map(item => `<li>${item}</li>`).join("");
+    }
+  }
+
+  function closeExpiryPopup() {
+    document.getElementById("expiryPopup").classList.add("hidden");
+  }
+
+  window.onload = () => {
+    loadInventory();
+    showExpiryPopup();
+  };
+  
+  function displaySyncLog() {
+  const log = JSON.parse(localStorage.getItem("syncLog")) || [];
+  const container = document.getElementById("syncLogContainer");
+  container.innerHTML = "";
+
+  log.slice(0, 5).forEach(entry => {
+    container.innerHTML += `
+      <div class="bg-slate-700 p-3 rounded border border-slate-600">
+        🗓️ ${entry.time} — <strong>${entry.name}</strong> (${entry.category}) removed by ${entry.user} 🔄
+      </div>
+    `;
+  });
+}
+
+window.onload = () => {
+  loadInventory();
+  showExpiryPopup();
+  displaySyncLog(); // <- make sure to add this
+};
+function markAs(action) {
+  alert(`Milk marked as ${action}.`);
+  if (action === 'discarded') {
+    document.getElementById("groceryPrompt").classList.remove("hidden");
+  }
+}
+
+function snoozeItem() {
+  // Simulate voice input
+  const simulatedVoice = "Remind me later";
+  alert(`Voice input: "${simulatedVoice}"`);
+  document.getElementById("groceryPrompt").classList.remove("hidden");
+}
+
+function addToGrocery() {
+  // Optional: simulate saving to grocery list
+  showToast("Milk added to grocery list!");
+  document.getElementById("groceryPrompt").classList.add("hidden");
+}
+
+</script>
+<!-- Sync Log Display -->
+<section class="glass p-6 rounded-2xl shadow-lg mb-8">
+  <div class="flex justify-between items-center mb-2">
+    <h2 class="text-2xl font-semibold text-cyan-400">🔁 Sync Activity Log</h2>
+    <a href="sync-feedback.html" class="text-sm bg-cyan-700 hover:bg-cyan-600 text-white px-3 py-1 rounded">View Full Log</a>
+  </div>
+  <div id="syncLogContainer" class="space-y-3 text-sm text-gray-300"></div>
+</section>
+<div class="flex justify-end mb-4">
+  <a href="login.html" class="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded text-sm shadow">
+    🔒 Log Out
+  </a>
+</div>
+
+
+</body>
+</html>

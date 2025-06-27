@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Food Storage Box - Full Requirements Documentation</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 30px;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #1a3c58;
+    }
+    .toc {
+      background-color: #f9f9f9;
+      border-left: 5px solid #4CAF50;
+      padding: 20px;
+      margin-bottom: 40px;
+    }
+    .toc ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .toc li {
+      margin: 10px 0;
+    }
+    .toc a {
+      color: #2d6a4f;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .toc a:hover {
+      text-decoration: underline;
+    }
+    .divider {
+      border: none;
+      border-top: 2px dashed #ccc;
+      margin: 50px 0;
+    }
+    pre {
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 20px;
+      border-left: 4px solid #4caf50;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+  
+  <style>
+    * {
+      font-family: "Times New Roman", Times, serif;
+    }
+  </style>
+  
+  
+  
+  
+</head>
+<body>
+
+  <h1>Smart Food Storage Box - Full Requirements Documentation</h1>
+  
+   <hr class="divider">
+  
+<section class="project-banner">
+    <h2>P2 – PROJECT PROPOSAL</h2>
+    <p>Project Title: Smart Food Storage Box</p>
+  </section>
+  
+   <hr class="divider">
+  
+  <nav class="toc">
+    <h2>📚 Table of Contents</h2>
+    <ul>
+      <li><a href="#section1">1.0 Gathering Requirements: User Analysis</a></li>
+      <li><a href="#section2">2.0 Gathering Requirements: Task Analysis</a></li>
+      <li><a href="#section3">3.0 Discussion</a></li>
+      <li><a href="#section4">4.0 Requirement Specification</a></li>
+      <li><a href="#section5">5.0 Established Design Requirements</a></li>
+      <li><a href="#section6">6.0 References</a></li>
+    </ul>
+  </nav>
+
+  <a id="section1"></a>
+  <hr class="divider">
+  <h2>1.0 Gathering Requirements: User Analysis</h2>
+  <pre>
+User 1: University students 
+User 2: Elderly individuals living alone 
+User 3: Housewives with family responsibilities
+
+1.1 PROPOSED TASK
+
+User 1:
+With limited space and a tight schedule that often leads to irregular eating times, keeping 
+track of your food supply becomes increasingly challenging, especially when storage 
+areas are shared and only moderate technological proficiency is available.
+Tasks:
+i. Scanning and adding new food item to smart storage.
+ii. Receive notification for expiring food and decide action.
+iii. Reorganizing food and updating the inventory before grocery shopping.
+
+User 2: 
+Elderly people living alone often struggle with memory loss, poor eyesight, and using digital devices. This makes it hard for them to manage food properly. They may forget to eat leftovers or not notice when food has expired, which can affect their health. A smart food storage system can guide them clearly using voice and colors, so they know what to eat and when. This support helps them care for themselves better, make their own decisions, and live more independently every day.
+Tasks:
+i. Automatic reminder to use leftover food first.
+ii. Getting reminders about food that will expire soon.
+iii. Emoji or colour display to show food conditions.
+
+User 3:
+Housewives have to juggle multiple responsibilities; Cooking, managing the family groceries, handling children. All the while trying to reduce food waste, staying on budget and having to plan meals in advance. They often end up purchasing food and groceries in bulk but end up struggling to track all the expiry dates or forgotten leftovers, leading to unplanned wastage.
+Tasks:
+i. Organizing and storing through new groceries into categories for easy access.
+ii. Notifications that track expired or soon-to-be expired but unused food.
+iii. Planning and searching for recipes based on current groceries.
+  </pre>
+
+  <a id="section2"></a>
+  <hr class="divider">
+  <h2>2.0 Gathering Requirements: Task Analysis</h2>
+  <pre>
+2.1 INTRODUCTION
+Hierarchical Task Analysis (HTA) is performed to study how user needs align with specific tasks, in order to develop a product that complements both user expectations and functional requirements. The requirements from all three users, university students, older individuals living alone, and housewives with family responsibilities are analysed further for better implementation of tasks in real-life situations, thereby enhancing the overall user experience. To establish the final design, these HTAs are reviewed and compared across all three user groups before determining which tasks should be prioritised, retained, and considered most functional in achieving the goal of a smart food storage system.
+	
+	2.2 REFINEMENT OF HIERARCHICAL TASK ANALYSIS (HTA)
+
+		2.21 HTA FOR TASK 1
+User 1: University Students
+<p><a href="https://drive.google.com/drive/folders/1txIUycZhShmT0cZ6nN_vF6hGWJB2kLtf" target="_blank">HTA Link</a></p>
+		0. Scanning and adding new food items to smart storage.
+1. Pick up the food item.
+ 			2. Open the smart food storage app.
+    			3. Select the “Add Item” icon.
+    			4. Scan the food item barcode or input details manually.
+        				4.1 Align barcode with scanner.
+        				4.2 Wait for successful scan confirmation.
+        				4.3 If unsuccessful, select manual entry.
+            				4.3.1 Type the item name.
+           		 			4.3.2 Input the expiry date.
+    			5. Confirm and save entry.
+
+		User 2: Elderly Individual Living Alone
+
+<p><a href="https://drive.google.com/drive/folders/1txIUycZhShmT0cZ6nN_vF6hGWJB2kLtf" target="_blank">HTA Link</a></p>
+		0. Automatic reminder to utilize the leftover food first.
+	 		1. System detects leftover food placed in storage.
+  				1.1 System asks, “Do you want to save this?” via voice prompt.
+  				1.2 User replies verbally (“Yes” or “No”).
+  				1.3 System stores item info without requiring button input.
+ 			2. Receive voice reminder about leftover food.
+2.1 System says, “Your [food name] is still in the fridge. Please eat it today.”
+2.2 Screen displays sad face emoji and red color to indicate urgency.
+3. User responds to the reminder.
+  				3.1 User acknowledges and decides to eat the food.
+3.2 System marks the food as “used” (automatically or by voice command).
+ 			4. System gives voice notification for soon-to-expire food.
+  				4.1 System says, “Your [food name] will expire soon.”
+  				4.2 User rearranges food physically based on reminder.
+  				4.3 User asks, “What food do I still have?”
+    				4.3.1 System shows large pictures of food items on screen.
+4.3.2 System verbally informs user about expired items      (e.g., “Your bread has expired.”)
+    				4.3.3 User removes expired item physically.
+    				4.3.4 User says, “Add bread to my shopping list.”
+ 			5. System updates inventory and shopping lists accordingly.
+  				5.1 Confirms action verbally (“Bread added to your shopping list”)
+  				5.2 Keeps inventory up to date, minimizing spoiled food.
+
+		User 3: Housewives with family responsibilities
+
+<p><a href="https://drive.google.com/file/d/1dIvx0z8XLd_dYRO4KzfyXrhqN0a3T1BX/view?usp=drive_link" target="_blank">HTA Link</a></p>
+		0. Organising and storing through new groceries into categories for easy access.
+ 			1. Open the smart food storage app.
+ 			2. Scan or key in new grocery items.
+2.1 Use the camera to scan food barcodes or Quick Response (QR) codes.
+  				2.2 If unsuccessful, manually insert the item name and expiry date.
+ 	3. Confirm item details (auto-filled or suggested).
+3.1 Check or edit food name, quantity, and category (e.g., dairy, meat, vegetables).
+  				3.2 Confirm the expiry date entered (auto-logged if available).
+ 			4. Assign to a category for easy access.
+  				4.1 Select a pre-defined category or use a suggested one.
+ 			5. Save and update inventory.
+  				5.1 App updates inventory list and category sorting.
+  				5.2 Visual confirmation that item is added.
+
+		2.22 HTA FOR TASK 2
+User 1: University Students
+Link: https://drive.google.com/file/d/1syC3DVMbx06HStAAFXn70GFtAoFbBi5a/view?usp=drive_link
+<p><a href="https://drive.google.com/file/d/1syC3DVMbx06HStAAFXn70GFtAoFbBi5a/view?usp=drive_link" target="_blank">HTA Link</a></p>
+
+
+0. Receive notification for expiring food and decide action.
+Receive notification on smart device.
+Open the smart food storage app to view item details.
+Check expiry date and food condition.
+Decide action:
+4.1 Consume soon if still good.
+        		4.2 Discard if expired or spoiled.
+        		4.3 Donate if possible and still consumable.
+Mark the action taken in the app or dismiss the reminder.
+
+		User 2: Elderly Individual Living Alone
+Link:https://drive.google.com/drive/folders/1txIUycZhShmT0cZ6nN_vF6hGWJB2kLtf 
+		0. Getting reminders about food that will expire soon.
+ 			1. Receive a gentle voice reminder from the system.
+1.1 Reminder states food name and urgency (e.g., “Your milk will expire tomorrow.”)
+  				1.2 Reminder uses calm, clear voice and simple wording.
+ 			2. View clear visual notification on the screen.
+  				2.1 Large font food name displayed.
+2.2 Food status shown with colors (green = safe, yellow = soon to expire, red = expired).
+2.3 Emoji indicator (e.g., sad face for urgent, neutral face for
+safety).
+ 			3. Take action based on reminder.
+3.1 Move or prioritize the food physically (e.g., place milk in front of the fridge).
+  				3.2 Ask system for more info if needed:
+    				3.2.1 User says, “What food do I still have?”
+3.2.2 System responds with voice and large images of inventory.
+3.3 Decide whether to consume, discard, or add to the shopping
+list.
+3.3.1 Use voice commands to mark food as “used” or “discarded”.
+3.3.2 Use voice commands to add items to the shopping list (e.g., “Add bread to my shopping list”).
+ 			4. System updates inventory and confirms user actions.
+4.1 Confirms actions with voice (e.g., “Bread added to shopping list.”).
+ 				4.2 Updates status and inventory automatically.
+
+		User 3: Housewives with family responsibilities
+
+<p><a href="https://drive.google.com/file/d/1zILXZ5QWeK7Mm8blE6UTr1Y5jH8YFJY_/view?usp=drive_link" target="_blank">HTA Link</a></p>
+0. Notifications that track expired or soon-to-be expired but unused food.
+1. App monitors expiry dates automatically in the background.
+2. Trigger notification for soon-to-expire items.
+3. Tap notification to view details.
+3.1 App opens to item info.
+4. See food status with color-coded visuals.
+4.1 Yellow for “expiring soon,” red for “expired”.
+ 		4.2 Optionally include emoji cues.
+5. Response to notification.
+5.1 Mark item either as used or discarded food.
+5.2 Snooze reminder. 
+
+		2.23 HTA FOR TASK 3
+		
+User 1: University Students
+
+<p><a href="https://drive.google.com/file/d/1D1VG7yLB_z_aAUlJWGXrmnbLNTpmcSPD/view?usp=sharing" target="_blank">HTA Link</a></p>
+0. Reorganize food and update inventory before grocery shopping.
+Open the smart food storage and physically check food.
+Move older items to the front (FIFO method).
+Remove expired or spoiled items.
+Update inventory in the app.
+4.1 Remove items no longer available.
+      		4.2 Edit quantities or expiration dates as needed.
+Grocery list will be generated based on the current inventory.
+
+		User 2: Elderly Individual Living Alone
+
+<p><a href="https://drive.google.com/drive/folders/1txIUycZhShmT0cZ6nN_vF6hGWJB2kLtf " target="_blank">HTA Link</a></p>
+0. Emoji or colour display to show food conditions.
+  		1. Determine the condition of each food item.
+   			1.1 System checks expiry date and usage status.
+   			1.2 System assigns condition category either it is fresh and safe to
+eat, nearing expiry or expired.
+2. Display corresponding emoji for each condition.
+      	2.1 Happy face emoji for fresh/safe food.
+      	2.2 Neutral or worried face emoji for nearing expiry.
+      	2.3 Sad or crossed face emoji for expired food.
+  	3. Display corresponding color for each condition.
+   		3.1 Green color for fresh/safe food.
+   		3.2 Yellow or orange color for nearing expiry.
+   		3.3 Red color for expired food.
+  	4. Present food information with large, clear visuals.
+   		4.1 Show large food names or pictures alongside emoji and color.
+   		4.2 Use high contrast colors for better visibility.
+   		4.3 Use a simple layout with minimal buttons or distractions.
+  	5. Allow users to respond based on visual status.
+   		5.1 User decides to consume, discard, or check more details.
+   		5.2 User can give simple voice or touch commands to update food
+status.
+6. System updates inventory based on user input.
+ 	6.1 Confirm changes with voice or visual feedback.
+ 	6.2 Keep the visual display updated in real-time.
+
+User 3: Housewives with family responsibilities
+
+<p><a href="https://drive.google.com/drive/folders/1txIUycZhShmT0cZ6nN_vF6hGWJB2kLtfhttps://drive.google.com/file/d/1nPWWSTXr9gc_FxdY4J2MdtgNDjQ0GgoE/view?usp=drive_link" target="_blank">HTA Link</a></p>
+		0. Planning and searching for recipes based on current groceries.
+			1. Open Smart Food Storage app
+ 			2. Navigate to “Recipe Suggestions” or “Meal Planner”
+ 			3. Browse or search recipes
+  				3.1 App filters recipes based on available ingredients
+  				3.2 Highlights recipes with the ingredients of soon-to-expire items
+3.3 Option to filter recipes by preferences, such as kid-friendly or quick meals.
+ 			4. Select a recipe
+  				4.1 View ingredients list and steps
+  				4.2 Check if all ingredients are in current inventory
+   				4.2.1 If not, app suggests missing items for grocery list
+			5. Add recipe to meal plan or cook immediately
+ 				5.1 Tap “Add to Meal Plan”
+5.2 Tap “Cook Now” where you will be links back to inventory for tracking
+ 			6.0 After cooking, mark ingredients as “Used”
+
+  </pre>
+
+  <a id="section3"></a>
+  <hr class="divider">
+  <h2>3.0 Discussion</h2>
+  <pre>
+3.1 TASK 1
+
+i.  Scanning and adding new food items to smart storage.
+
+This task involves the users initiating a process to register new food items in the smart storage box system. Based on the HTA that has been done, the user either scans a barcode of the food items or manually inputs the food details in the system. Then, the system will store information about the food items such as the item names and its expiry date. 
+
+By using the thinking aloud techniques during the task it reveals whether the users might find scanning process perceptive or frustrating and if manually input the details feels tedious or confusing. Other than that, it is questionable how well the users understand the system feedback like either its successful scan or entry confirmation. 
+
+ii. Automatic Reminder to Use Leftover Food First.
+
+This task engages with the system in prompting the users to consume the leftover food before having the new items in the smart storage box. The HTA outlines how the users are notified through voices or notifications, identify the leftovers, and act upon the reminder.
+
+By using the thinking aloud technique, it allows the expert to assess whether the reminder is understood by the users, whether users feel motivated or confused from it, and whether the users can easily follow the steps to approach or consume the food.
+
+iii. Organising and storing through new groceries into categories for easy access.
+
+This task involves the user scanning or entering new groceries into the system and assigning them to appropriate categories for better organization and future retrieval. The HTA includes opening the app, scanning or manually adding items, assigning categories and saving it into the inventory. 
+
+The thinking aloud techniques helps determine whether the users understand the need for categorization of the items or if the category suggestions match their expectations. In addition, it also helps determine how intuitive the category selection interface is, especially under time pressure. This method exposes potential breakdowns, such as uncertainty about category names or hesitations during item entry.
+
+3.2 TASK 2
+
+i. Receive notification for expiring food and decide action.
+
+This task involves the system alerting the users when food is close to its expiry date, prompting them to take an appropriate action which either consume, discard, or add it to a shopping list. The HTA that was included in the system are receiving the notification, checking item details, evaluating the expiry condition, deciding on a course of action and updating the system inventory. 
+
+With thinking aloud, it can be observed that whether the sers notice and understand the urgency of the notification or if the system’s interface supports or delays their response. This process helps identify barriers in comprehension, timing, and motivation.
+
+ii. Getting reminders about food that will expire soon.
+
+This task involves the system proactively reminding the users that a food item in the storage box will expire soon. The HTA breakdown includes the system checks expiration dates and triggers a reminder to the users. The reminder is delivered as a notification by voices and visuals. Then, the user will check the item and decide on what to do with it. 
+
+Using the thinking aloud techniques here helps to identify whether users feel the reminder is helpful, overwhelming, or easy to ignore. It also helps identify how users interpret the urgency from the reminder. It is crucial to test how well the reminder translates into action, especially for users with memory, visual, or attention limitations.
+
+iii. Notifications that track expired or soon-to-be expired but unused food.
+
+This task involves the system monitoring all items in the smart food storage box and notifying the users when the food is about to expire or already expired but unused. The HTA involves a background tracking of expiry dates, notification trigger for near-expiry or expired items, user receives and reads the alert given and decides to take the action, and system will update the inventory status.
+
+Using the thinking aloud techniques during this task highlights whether they use the prompt as a call to action or if the users trust the system’s reminders and find them helpful or disturbing. It also highlights whether the users understand the distinction between ‘about to expire’ and ‘already expired’. 
+
+3.3 TASK 3
+
+i. Reorganize food and update inventory before grocery shopping.
+
+This task focuses on users preparing for grocery shopping by physically checking current food stock, reorganizing items, removing expired food, updating the inventory in the system, and generating a shopping list. These features might be useful for the users in terms of budgeting and efficient shopping experiences. 
+
+With thinking aloud techniques, evaluators can observe whether the users remember to check the inventory before shopping. It can also observe if the users trust the system’s inventory status or prefer to double-check manually. For some users, a basic inventory system can help to reduce any food waste especially if they may forget or skip any steps.
+ii. Emoji or colour display to show food conditions.
+
+This task uses visual indicators like emojis and colors to show the condition of food stored in the smart system. A green / happy face indicates the food is safe to eat, a yellow / neutral face indicates an nearing expiry food condition and a red / sad face indicates the food is already expired. The HTA includes the system that checks the food condition based on expiry date, assigns visual status, displays status on screen, and users interpret the visuals shown to take an action. 
+
+Through thinking aloud techniques, it can be observed if users understand the color or emoji scheme easily. It also can be observed how much users rely on these indicators versus reading dates manually or if any of the visual cues cause confusion, especially among colorblind or elderly users.
+
+iii. Planning and searching for recipes based on current groceries.
+
+This task allows users to view their current inventory, search for or receive suggested recipes based on what is available, add meals to a plan or begin cooking immediately, and update the inventory once the ingredients are used. The HTA steps include opening the smart food storage app, navigating to the ‘recipe suggestions’ section, browsing for recipes based on available ingredients, selecting a recipe, cooking the recipe, and marking used items to update inventory.
+
+The thinking aloud techniques reveal whether users feel overwhelmed or assisted by the suggestions given or if they trust the recipe suggestions based on what’s in the fridge. It also reveals if the process from the recipe to the meal plan feels intuitive and convenient to the users.
+
+  </pre>
+
+  <a id="section4"></a>
+  <hr class="divider">
+  <h2>4.0 Requirement Specification</h2>
+  <pre>
+4.1 TASK 1
+Functional: 
+i. Food adding by scanning or manual entry
+Description: This system should authorize the data entries of the food item added into the smart food storage box with scanning or manually insert the name and respective expiry date. 
+Justification: Prior to the user might experience scan error or failure on recognising items, manual alternative of manual input must be provided in the system to assist the issue. 
+ii. Voice command function
+Description: This system shall prompt users through voice command to verify if the food storing is completed and could digest simple instruction responses from users such as ‘Yes’ and ‘No’.
+Justification: Due to diverse backgrounds of users, this system specifically provides voice-based programs to aid specifically the elderly that are less-tech savvy, to assist with more efficient food storing.
+iii. Food categories assignment
+Description: This system should allow the user to store the food based on their categories.
+Justification: Food sorting based on categories make it easy to organize and locate particularly for housewives with busy family responsibilities.
+iv. Automatic inventory update
+Description: This system must update the inventory prior to every detection on storing with categories of food being decided and inventory being updated.
+Justification: Updated inventory is most useful and efficient for all type of users where workload from manual checking can be reduced.
+
+
+iv. Reminder notifications
+Description: This system shall alert the user on the nearing expired food or leftovers stored in the smart food storage via voice or visual representation.
+Justification: Reminders received by the users will help with reducing food waste and help specially the elderly with timely consumption of food. 
+
+Non-Functional:
+i. Feedback confirmation via verbal or visual representation
+Description: This system should confirm the food storing through verbal and visual confirmation responses.
+Justification: Prone to the error in virtual interaction, this feedback will help users to feel reassured that the system is receiving the update on their stored food.
+ii. Simplifies user interface 
+Description: This system shall integrate a clean layout with minimal steps and simple icons to make it easy to use.
+Justification: Avoid overwhelming mostly toward the unversed-technology user or elderly to learn and practice. 
+iii. Voice command integration 
+Description: This system should support voice command to assist with confirming, adding and marking tasks.
+Justification: For elderly and people with poor eyesight that tend to experience visual difficulties, this voice command may reduce physical interaction hence help with the system usage. 
+
+
+
+
+4.2 TASK 2
+Functional: 
+i. Automated expiry monitoring
+Description: This system shall monitor the expiry date of the food stored and alert the user if they approach expiry date.  
+Justification: Food monitoring that automatically syncs with smart devices will help with food management, ensuring spoilage and food waste are reduced apart from supporting inventory efficiency. 
+ii. Visual and voice reminder display
+Description: This system should display both voice and visual display with large and clear designs of selected text.
+Justification: To help assist the user with visual limitations that benefit from the non-textual cues, voice display will enhance the clarity thus make it accessible. 
+iii. Emoji implementation to indicate food status
+Description: This system shall make use of the current invention of emoji as an indicator of food condition.
+Justification: The use of emoji may convey the message in a more friendly and easy-to-understand manner, for all types of users, specifically the one with technological inexperience.
+iv. User response to reminder 
+Description: This system should allow users to respond by marking the item as consumed, discarded or snooze the reminder via touch or voice command.
+Justification: Voice command will improve the usability of users, especially the elderly while touch input will suit younger users.
+
+
+v. Grocery list update 
+Description: This system should let the user insert the discarded or expired item into the grocery list via voice or manual selection.
+Justification: Prior to the reminder done followed by one the suggested action of discarding, this will help the user to have their grocery list updated without manual checking.
+
+Non-Functional:
+i. Accessible interface design
+Description: This system interface shall implement large fonts, clear colors, and intuitive icons suitable for users with impaired vision.
+Justification: Helping users with poor eyesight, preventing them from missing reminders.
+ii. Multimodal notification delivery
+Description: Visual and auditory channels execution for notification delivery will enhance the accessibility.
+Justification: Prior to multitasking users with heavy commitment and sensory limitations, using both visual and auditory channels will increase the reliability of the reminder reaching users. 
+iii. System reliability
+Description: The system shall operate with ease where the function is continuously operated continuously without having to undergo frequent maintenance.
+Justification: System consistency will determine how much it may contribute or reduce the cognitive load of the user and ensure timely reminders.
+
+
+
+
+
+
+4.3 TASK 3
+Functional: 
+i. Inventory organisation and update 
+Description: This system shall allow the users to view and update their inventory with the marked action, consumed, expired or discarded food items and ensure the ability to do editing on the quantities and expiry dates.
+Justification: While it will help users to avoid duplicate purchases and reduce waste specially for students with tight budgets, this will on the other hand also be helpful for elderly individuals and elderly to keep track of their food and plan their meals accordingly.
+ii. Visual food condition indicator using emoji and colour codes
+Description: This system should visually indicate the food condition using emoji and colour coding representation.
+Justification: Elderly users will benefit from this high contrast visual and simple emoji to help them with identifying food condition and safety, similarly to the user who prefers visual cues over reading text.
+iii. Large and clear food information display
+Description: This system app should implement a simple layout consisting of large font text, and images for readability.
+Justification: Clear interface will help users with poor eyesight to avoid confusion and error in decision making.
+iv. Recipe suggestion based on current inventory
+Description: This system should suggest recipes with priority for available items nearing expiry date.
+Justification: Housewives with meal planning responsibilities will benefit from recipes which make use of groceries efficiently and reduce waste. 
+
+v. Grocery list generation
+Description: This system shall update the grocery list considering the inventory gaps durin recipe planning and item removal.
+Justification: Users will be able to receive updates for their latest grocery list that corresponds to their usage and recipe plans. 
+vi. Voice and touch-based status update
+Description: This system should allow users to use both voice and simple touch input to indicate status for food either they are consumed or discarded.
+Justification: Users, especially the elderly will benefit from this lee-effort interaction since they are likely to be unable to access complex systems. 
+
+Non-Functional:
+i. Accessible user interface (UI) design
+Description: The interface should use high contrast colours, simple layouts, and large buttons or text to accommodate users with eyesight limitations.
+Justification: Elderly with preference towards clear interface can access the system with ease and confidently use it without frustration.
+ii. System feedback 
+Description: This system should consist of instant updates towards user action of item updates, recipe planning, and reminders.
+Justification: Users with tight schedules need a quick and efficient experience while using the system.
+iii. Features integration
+Description: Inventory, visual indicators, recipe suggestions, and grocery lists must operate simultaneously and synchronised.
+Justification: Users prefer a seamless interface with no obvious interruption to reduce time waste. 
+iv. Reliability of visual indicator 
+Description: The system should include only accurate visual, emoji and colour-coded representations to avoid false reflection from actual food conditions.
+Justification: Inaccuracy in visual indicators used will mislead the user specially the elders to pick on expired items, potentially risking their health.
+
+  </pre>
+
+  <a id="section5"></a>
+  <hr class="divider">
+  <h2>5.0 Established Design Requirements</h2>
+  <pre>
+Functional:
+i. Food adding 
+Description: This system authorizes the data entry of food items added into the smart food storage box, either by scanning or manually inserting the name and respective expiry date. Voice commands shall also be available to assist with confirming whether the food addition action is successful. In addition, food categorization should be synchronized within the system, with the ability to update the inventory upon each item addition.
+Justification: Multiple input alternatives and automatic updates will improve the accuracy of data entries according to user preferences, while categorization helps streamline storage for busy households.
+
+ii. Expiry monitoring
+Description: The system simultaneously tracks the expiry date of each item and notifies users using emojis, colour codes, and multimodal reminders consisting of visual and audio notifications, thus enabling the user to respond with either a discard, consume, or snooze action.
+Justification: Timely reminders will alert users to manage their food and reduce waste while keeping their food consumption safe, using multimodal notifications to accommodate various users with visual and auditory impairments.
+
+
+iii. Inventory management:
+Description: This system allows inventory management by updating the quantity and expiry date, and viewing item conditions through color coding and emoji indicators. With both voice and touch support, recipe suggestions based on available ingredients are provided, in addition to the ability to update the grocery list.
+Justification: Providing real-time monitoring will help with grocery shopping by reducing unnecessary purchases, while ensuring the system remains flexible for a wide range of users through the implementation of multiple interaction modes.
+
+Non-functional: 
+i. Accessibility
+Description: The system employs large fonts, a high-contrast user interface, intuitive icons, and voice controls to support users with visual and auditory impairments.
+Justification: Users with various backgrounds and impairments can benefit from the design due to its accessibility and comfortable interaction, regardless of user ability.
+
+ii. System feedback 
+Description: The system provides an immediate response to actions such as adding and editing items through voice or visual confirmation.
+Justification: Prompt feedback will reassure the user that the input has been received by the system, thereby reducing repetitive actions and minimizing confusion.
+
+iii. Reliability
+Description: The system design aligns with the goal of operating continuously with minimal maintenance and trustworthy status indicators.
+Justification: Systems with reliable goals build user trust by requiring less technical maintenance and ensuring consistent performance, especially when dealing with food management that may impact user safety.
+iv. Integration
+Description: The system integration featuring inventory tracking, expiry reminders, recipe suggestions, and grocery list generation is synchronized across devices.
+Justification: Seamless integration ensures efficiency by allowing users to manage various features through a single platform, providing a comfortable experience and eliminating redundancy.
+
+New design requirement:
+Description: The system should include multi-user profile management to allow multiple users to log in to the system simultaneously on different or shared devices.
+Justification: Supporting multiple user logins enhances efficiency, especially in shared households, by allowing all members to contribute to food management efforts.
+  </pre>
+
+  <a id="section6"></a>
+  <hr class="divider">
+  <h2>6.0 References</h2>
+  <pre>
+<ul>
+  <li>
+    Evans, Ellen & Redmond, Elizabeth. (2016). Older Adult Consumer Knowledge, 
+    Attitudes, and Self-Reported Storage Practices of Ready-to-Eat Food Products and Risks 
+    Associated with Listeriosis. <i>Journal of Food Protection, 79</i>, 263–272. 
+    <a href="https://doi.org/10.4315/0362-028X.JFP-15-312" target="_blank">https://doi.org/10.4315/0362-028X.JFP-15-312</a>
+  </li>
+
+  <li>
+    Online, S. (2024, February 7). When good food goes to waste. <i>The Star</i>. 
+    Retrieved from 
+    <a href="https://www.thestar.com.my/news/education/2024/02/04/when-good-food-goes-to-waste" target="_blank">
+      https://www.thestar.com.my/news/education/2024/02/04/when-good-food-goes-to-waste
+    </a>
+  </li>
+
+  <li>
+    Phooi CL, Azman EA, Ismail R, Arif Shah J, Koay ESR. (2022). Food Waste Behaviour and 
+    Awareness of Malaysian. <i>Scientifica (Cairo)</i>, 2022:6729248. 
+    <a href="https://doi.org/10.1155/2022/6729248" target="_blank">https://doi.org/10.1155/2022/6729248</a>
+  </li>
+
+  <li>
+    New Hope Network staff. (2023, August 28). It’s not just consumers who are confused about expiration date labels. 
+    Retrieved from 
+    <a href="https://www.newhope.com/market-data-and-analysis/it-s-not-just-consumers-who-are-confused-about-expiration-date-labels" target="_blank">
+      https://www.newhope.com/market-data-and-analysis/it-s-not-just-consumers-who-are-confused-about-expiration-date-labels
+    </a>
+  </li>
+
+  <li>
+    Norazmir, MN, Rusli, Siti, & Asmawi, Ummi. (2023). Awareness, Knowledge, and 
+    Practices towards Reading Snack Food Labels among Malaysian Adolescents. 
+    <i>Jurnal Gizi dan Pangan, 18</i>, 61–70. 
+    <a href="https://doi.org/10.25182/jgp.2023.18.1.61-70" target="_blank">https://doi.org/10.25182/jgp.2023.18.1.61-70</a>
+  </li>
+
+  <li>
+    Dekker, C. A., Baumgartner, S. E., Sumter, S. R., & Ohme, J. (2024). Beyond the Buzz: 
+    Investigating the effects of a Notification-Disabling intervention on smartphone behavior and Digital Well-Being. 
+    <i>Media Psychology</i>, 1–27. 
+    <a href="https://doi.org/10.1080/15213269.2024.2334025" target="_blank">https://doi.org/10.1080/15213269.2024.2334025</a>
+  </li>
+</ul>
+
+  </pre>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirm Expiry</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-indigo-900 to-slate-900 min-h-screen text-white p-6 flex items-center justify-center">
+
+  <div class="bg-slate-800 p-8 rounded-xl shadow-xl w-full max-w-md">
+    <h2 class="text-2xl font-bold text-cyan-300 mb-2">📦 Item Detected: <span class="text-white">Cereal</span></h2>
+    <p class="text-sm text-gray-400 mb-4">“Cereal added. Please confirm expiry date.”</p>
+
+    <label for="expiryDate" class="block text-sm text-gray-300 mb-1">📅 Expiry Date:</label>
+    <input type="date" id="expiryDate" class="w-full px-4 py-2 rounded bg-slate-700 text-white border border-slate-600 mb-4" />
+
+    <div class="flex justify-between items-center gap-4">
+      <button onclick="cancel()" class="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded w-1/2">❌ Cancel</button>
+      <button onclick="confirmExpiry()" class="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded w-1/2">✅ Confirm</button>
+    </div>
+
+    <p id="feedbackMsg" class="text-green-300 mt-4 font-medium hidden">😊 Cereal added to Snacks. Inventory updated.</p>
+  </div>
+<script>
+  const item = JSON.parse(localStorage.getItem("scannedItem"));
+  if (item) {
+    document.querySelector("h2 span").textContent = item.name;
+  }
+
+  function confirmExpiry() {
+    const date = document.getElementById('expiryDate').value;
+    if (!date) {
+      alert("Please select an expiry date!");
+      return;
+    }
+
+    // Add item to inventory
+    const finalItem = {
+      ...item,
+      expiryDate: date
+    };
+
+    const inventory = JSON.parse(localStorage.getItem("inventory")) || [];
+    inventory.push(finalItem);
+    localStorage.setItem("inventory", JSON.stringify(inventory));
+    localStorage.removeItem("scannedItem");
+
+    document.getElementById('feedbackMsg').classList.remove("hidden");
+
+    setTimeout(() => {
+      window.location.href = "interfacetest.html"; // or index.html
+    }, 1500);
+  }
+
+  function cancel() {
+    localStorage.removeItem("scannedItem");
+    window.location.href = "interfacetest.html";
+  }
+</script>
+
+</body>
+</html>
